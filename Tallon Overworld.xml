@@ -1,0 +1,141 @@
+<map name="Tallon Overworld" version="1.0.2">
+  <include src="defaults.xml"/>
+  <include src="Shared/reward-one-gap.xml"/>
+  <authors>
+    <author uuid="0e56116560bf49e6aa383db002ad7d08"/>
+    <!-- AbusiveUser -->
+  </authors>
+  <teams>
+    <team id="red" color="red" min="2" max="20">{colors.red}</team>
+    <team id="blue" color="blue" min="2" max="20">{colors.blue}</team>
+  </teams>
+  <spawns>
+    <!-- Spectator Spawn -->
+    <spawn>
+      <regions>
+        <point yaw="90">52, 43, 63</point>
+      </regions>
+    </spawn>
+    <!-- Team Spawns -->
+    <spawn team="red" loadout="default" yaw="0">
+      <regions>
+        <point yaw="0">9, 7, -10</point>
+      </regions>
+    </spawn>
+    <spawn team="blue" loadout="default" yaw="180">
+      <regions>
+        <point yaw="180">9, 7, 136</point>
+      </regions>
+    </spawn>
+  </spawns>
+  <objectives>
+    <monuments materials="obsidian">
+      <monuments owner="red">
+        <monument name="{directions.left}">
+          <region>
+            <block>53, 8, 30</block>
+          </region>
+        </monument>
+        <monument name="{directions.right}">
+          <region>
+            <block>-35, 8, 30</block>
+          </region>
+        </monument>
+      </monuments>
+      <monuments owner="blue">
+        <monument name="{directions.left}">
+          <region>
+            <block>53, 8, 96</block>
+          </region>
+        </monument>
+        <monument name="{directions.right}">
+          <region>
+            <block>-35, 8, 96</block>
+          </region>
+        </monument>
+      </monuments>
+    </monuments>
+  </objectives>
+  <zones>
+    <!-- Entering Red Spawn -->
+    <zone modify="never">
+      <region>
+        <cuboid min="26, 0, 0" max="-9, 13, -14"/>
+      </region>
+      <enter>
+        <team>red</team>
+      </enter>
+      <message>{errors.spawn-restricted}</message>
+    </zone>
+    <!-- Entering Blue Spawn -->
+    <zone modify="never">
+      <region>
+        <cuboid min="-8, 0, 126" max="27, 13, 140"/>
+      </region>
+      <enter>
+        <team>blue</team>
+      </enter>
+      <message>{errors.spawn-restricted}</message>
+    </zone>
+    <zone modify="never">
+      <region>
+        <invert>
+          <cuboid min="57, 0, 141" max="-39, 35, -14"/>
+        </invert>
+      </region>
+      <message>{errors.outside-map}</message>
+    </zone>
+  </zones>
+  <loadouts>
+    <loadout id="default">
+      <effect>night vision</effect>
+      <helmet team-color="true" material="leather helmet"/>
+      <chestplate team-color="true" material="leather chestplate"/>
+      <boots team-color="true" material="leather boots"/>
+      <item slot="0" material="stone sword"/>
+      <item slot="1" material="bow">
+        <enchantment>arrow infinite</enchantment>
+      </item>
+      <item slot="2" material="diamond pickaxe">
+        <enchantment level="1">dig speed</enchantment>
+        <enchantment level="2">durability</enchantment>
+      </item>
+      <item slot="3" material="stone axe"/>
+      <item slot="5" material="glass" amount="64"/>
+      <item slot="6" material="log" damage="2" amount="64"/>
+      <item slot="7" material="golden carrot" amount="32"/>
+      <item slot="8" material="golden apple" amount="1"/>
+      <item slot="28" material="arrow" amount="1"/>
+    </loadout>
+    <loadout id="kill-reward">
+      <item material="golden apple"/>
+    </loadout>
+  </loadouts>
+  <kills>
+    <rewards>
+      <reward loadout="kill-reward"/>
+    </rewards>
+  </kills>
+  <items>
+    <remove-drops>
+      <any>
+        <material>leather helmet</material>
+        <material>leather chestplate</material>
+        <material>leather boots</material>
+        <material>iron sword</material>
+        <material>bow</material>
+        <material>stone axe</material>
+        <material>golden carrot</material>
+        <material>stone sword</material>
+        <material>diamond pickaxe</material>
+      </any>
+    </remove-drops>
+    <repair-tools>
+      <any>
+        <material>stone sword</material>
+        <material>bow</material>
+        <material>diamond pickaxe</material>
+      </any>
+    </repair-tools>
+  </items>
+</map>

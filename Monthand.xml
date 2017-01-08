@@ -1,0 +1,188 @@
+<map name="Monthand5CP" version="1.3.7">
+ <include src="defaults.xml"/>
+ <include src="Shared/reward-one-gap.xml"/>
+<authors>
+<author uuid="0e56116560bf49e6aa383db002ad7d08"/>
+<!--  AbusiveUser  -->
+</authors>
+<teams>
+ <team id="green" color="green" min="2" max="15">{colors.green}</team>
+ <team id="orange" color="orange" min="2" max="15">{colors.orange}</team>
+</teams>
+<spawns>
+ <spawn yaw="-90">
+  <regions>
+   <block>-7, 30, 72</block>
+  </regions>
+ </spawn>
+ <spawn team="green" yaw="180" loadout="default">
+  <regions>
+   <block>1, 6, -5</block>
+  </regions>
+ </spawn>
+ <spawn team="orange" yaw="0" loadout="default">
+  <regions>
+   <blocks>-17, 6, 149</block>
+  </regions>
+ </spawn>
+</spawns>
+<results>
+ <win scenario="objectives">
+  <check>
+   <time>15m</time>
+  </check>
+ </win>
+ <win scenario="team" team="green"> 
+  <check>
+   <all>
+    <objective team="green">capture-center</objective>
+    <objective team="green">green-1st</objective>
+    <objective team="green">green-2nd</objective>
+    <objective team="green">orange-1st</objective>
+    <objective team="green">orange-2nd</objective>
+   </all>
+  </check>
+ </win>
+ <win scenario="team" team="orange">
+  <check>
+   <all>
+    <objective team="orange">capture-center</objective>
+    <objective team="orange">green-1st</objective>
+    <objective team="orange">green-2nd</objective>
+    <objective team="orange">orange-1st</objective>
+    <objective team="orange">orange-2nd</objective>
+   </all>
+  </check>
+ </win>
+</results>
+<objectives>
+  <!-- Middle -->
+  <hill id="capture-center" name="Center" capture-time="10s">
+   <capture>
+    <cuboid min="-3, 5, 69" max="-11, 5, 76"/>
+   </capture>
+   <progress>
+    <cuboid min="-3, 5, 69" max="-11, 5, 76"/>
+   </progress>
+   <capture-check>
+    <any>
+     <all>
+      <team>green</team>
+      <objective team="green">green-1st</objective>
+      <objective team="green">green-2nd</objective>
+     </all>
+     <all>
+      <team>orange</team>
+      <objective team="orange">orange-1st</objective>
+      <objective team="orange">orange-2nd</objective>
+     </all>
+    </any>
+   </capture-check>
+  </hill>
+  <!-- Green 1st -->
+  <hill id="green-1st" name="Green 1st" capture-time="10s" initial-owner="green">
+    <capture>
+     <cuboid min="20, 11, 54" max="15, 11, 59"/>
+    </capture>
+    <progress>
+     <cuboid min="20, 11, 54" max="15, 11, 59"/>
+    </progress>
+    <capture-check>
+     <any>
+      <all>	
+      <team>orange</team>
+      <objective team="orange">orange-1st</objective>
+      <objective team="orange">orange-2nd</objective>
+      <objective team="orange">center</objectives>
+     </all>
+     <all>
+      <team>green</team>
+      <objective team="green">green-2nd</objective>
+     </all>
+    </any>
+   </capture-check>
+  </hill>
+  <!-- Green 2nd -->
+  <hill id="green-2nd" name="Green 2nd" capture-time="12s" initial-owner="green">
+   <capture>
+     <cuboid min="-11, 8, 24" max="-16, 8, 19"/>
+   </capture>
+   <progress>
+     <cuboid min="-11, 8, 24" max="-16, 8, 19"/>
+   </progress>
+   <capture-check>
+    <any>
+     <all>
+       <team>orange</team>
+       <objective team="orange">orange-1st</objective>
+       <objective team="orange">orange-2nd</objective>
+       <objective team="orange">center</objective>
+       <objective team="orange">green-2nd</objective>
+     </all>
+    </any>
+   </capture-check>
+  </hill>
+  <!-- Orange 1st --> 
+  <hill id="orange-1st" name="Orange 1st" capture-time="10s" initial-owner="orange">
+   <capture>
+    <cuboid min="-36, 11, 90" max="-30, 11, 86"/>
+   </capture>
+   <progress>
+    <cuboid min="-36, 11,90" max="-30, 11, 86"/>
+   </progress>
+   <capture-check>
+    <any>
+     <all>
+      <team>green</team>
+	  <objective team="green">green-1st</objective>
+	  <objective team="green">green-2nd</objective>
+	  <objective team="green">center</objective>
+	 </all>
+     <all>
+      <team>orange</team>
+      <objective team="orange">orange-2nd</objective>
+     </all>
+    </any>
+   </capture-check>
+  </hill>
+  <!-- Orange 2nd -->
+  <hill id="orange-2nd" name="Orange 2nd" capture time="12s" intitial owner="orange">
+   <capture>
+    <cuboid min="-3, 8, 125" max="2, 8, 120"/>
+   </capture>
+   <progress>
+    <cuboid min="-3, 8, 125" max="2,8,120"/>
+   </progress>
+   <capture-check>
+    <any>
+     <all>
+      <team>green</team>
+      <objective team="green">green-1st</objective>
+      <objective team="green">green-2nd</objective>	 
+      <objective team="green">center</objective>
+      <objective team="green">orange-1st</objective>
+	 </all>
+   </any>
+  </capture-check>
+ </hill>
+</objectives>
+<loadouts>
+ <loadout id="defualt">
+  <effect duration="2s">damage resistance</effect>
+  <helmet material="chain helmet"/>
+  <chestplate material="leather chestplate" team-color="true"/>
+  <leggings material="iron leggings"/>
+  <boots material="leather boots" team-color="true"/>
+  <item slot="0" material="stone sword"/>
+  <item slot="1" material="bow"/>
+  <item slot="3" material="arrow" amount="32"/>
+  <item slot="4" material="golden carrot" amount="16"/>
+  <iteam slot="8" material="golden apple" amount="1"/>
+ </loadout>
+</loadouts>
+<world>
+  <gamerules>
+   <doDaylightCycle>false</doDaylightCycle>
+  </gamerules>
+ </world>
+</map> 

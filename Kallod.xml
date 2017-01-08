@@ -1,0 +1,182 @@
+<map name="Kallod" version="1.0.0">
+  <include src="default.xml"/>
+  <include src="Shared/reward-one-gap.xml"/>
+  <include src="Shared/phases-dtc.xml"/>
+  <authors>
+    <author uuid="0e56116560bf49e6aa383db002ad7d08"/>
+    <!-- AbusiveUser -->
+  </authors>
+  <teams>
+    <team id="red" color="red" min="2" max="25">{colors.red}</team>
+    <team id="blue" color="blue" min="2" max="25">{colors.blue}</team>
+  </teams>
+  <spawns>
+    <!-- Spectator Spawn -->
+    <spawn>
+      <regions>
+        <point yaw="-180">-88, 54, 39</point>
+      </regions>
+    </spawn>
+    <!-- Team Spawn -->
+    <spawn team="red" loadout="default" yaw="-90">
+      <regions>
+        <point yaw="-90">-193, 21, -17</point>
+      </regions>
+    </spawn>
+    <spawn team="blue" loadout="defualt" yaw="90">
+      <regions>
+        <point yaw="90">17, 21, -17</point>
+      </regions>
+    </spawn>
+  </spawns>
+  <objectives>
+    <leakables materials="obsidian" destroyable="true" first-phase="gold">
+      <leakables owner="blue">
+        <leakable name="{directions.midline}" leak-distance="5" repairable="true">
+          <region>
+            <cuboid min="-53, 18, -13" max="-45, 27, -21"/>
+          </region>
+        </leakable>
+      </leakables>
+      <leakables owner="red">
+        <leakable name="{directions.midline}" leak-distance="5" repairable="true">
+          <region>
+            <cuboid min="-123, 18, -21" max="-131, 27, -13"/>
+          </region>
+        </leakable>
+      </leakables>
+    </leakables>
+    <monuments material="emerald block" destroyable="true">
+      <monuments owner="red">
+        <monument name="Monument A">
+          <region>
+            <cuboid min="-59, 21, 5" max="-57, 26, 7"/>
+          </region>
+        </monument>
+        <monument name="Monument B">
+          <region>
+            <cuboid min="-57, 21, -39" max="-59, 26, -41"/>
+          </region>
+        </monument>
+      </monuments>
+      <monuments owner="blue">
+        <monument name="Monument A">
+          <region>
+            <cuboid min="-117, 21, -41" max="-119, 26, -39"/>
+          </region>
+        </monument>
+        <monument name="Monument B">
+          <region>
+            <cuboid min="-119, 21, 5" max="-117, 26, 7"/>
+          </region>
+        </monument>
+      </monuments>
+    </monuments>
+  </objectives>
+    <results>
+      <win sceneario="objectives">
+        <check>
+          <time>45m</time>
+        </check>
+      </win>
+    </results>
+    <loadouts>
+      <loadout id="default">
+        <item slot="0" material="iron sword"/>
+        <item slot="1" material="bow">
+         <enchantment>arrow infinite</enchantment>
+        </item>
+        <item slot="2" material="diamond pickaxe">
+          <enchantment level="2">durability</enchantment>
+        </item>
+        <item slot="3" material="iron axe"/>
+        <item slot="4" material="golden apple" amount="2"/>
+        <item slot="5" material="nether brick" amount="64"/>
+        <item slot="6" material="glass" amount="64"/>
+        <item slot="7" material="ladder" amount="32"/>
+        <item slot="8" material="bread" amount="32"/>
+        <item slot="28" material="arrow" amount="1"/>
+      </loadout>
+      <loadout id="kill-reward">
+        <item material="golden apple"/>
+      </loadout>
+    </loadouts>
+    <kills>
+      <rewards>
+        <reward loadout="kill-reward"/>
+      </rewards>
+    </kills>
+    <phases countdown-message="{phases.transition}" fail-message="{phases.cores.fail}">
+      <phase id="gold" success-message="{phases.core.gold}" delay="25m" pass-phase="glass">
+        ^eGold
+        <materials>
+          <material find="obsidian" replace="gold block"/>
+        </materials>
+      </phase>
+      <phase id="glass" success-message="{phases.core.glass}" delay="15m">
+        Glass
+        <materials>
+          <material find="gold block" replace="glass"/>
+        </materials>
+      </phase>
+    </phases>
+    <regions>
+      <subtract id="void-outer">
+        <void/>
+        <cuboid min="-140, 0, -49" max="-36, 45, 14"/>
+      </subtract>
+      <above id="height-limit" y="45"/>
+    </regions>
+    <zones>
+      <zone modify="never" region="void-outer">
+        <message>{errors.outside-map}</message>
+      </zone>
+      <zone modify="never" region="height-limit">
+        <message>{errors.height-limit}</message>
+      </zone>
+      <zone modify="never">
+        <enter>
+          <team>red</team>
+        </enter>
+        <region>
+          <subtract>
+            <cuboid min="-154, 21, -14" max="-195, 25, -20"/>
+          </subtract>
+        </region>
+        <message>{errors.spawn-restricted}</message>
+      </zone>
+      <zone modify="never">
+        <enter>
+          <team>blue</team>
+        </enter>
+        <region>
+          <subtract>
+            <cuboid min="-22, 21, -20" max="19, 26, -14"/>
+          </subtract>
+        </region>
+        <message>{errors.spawn-restricted}</message>
+      </zone>
+    </zones>
+    <world>
+      <storm>false</storm>
+      <weather check="always"/>
+    </world>
+    <items>
+      <remove-drops>
+        <any>
+          <material>golden apple</material>
+          <material>ladder</material>
+          <material>bread</material>
+          <material>iron axe</material>
+        </any>
+      </remove-drops>
+      <repair-tools>
+        <any>
+          <material>iron sword</material>
+          <material>bow</material>
+          <material>diamond pickaxe</material>
+          <material>iron axe</material>
+        </any>
+      </repair-tools>
+    </items>
+  </map>

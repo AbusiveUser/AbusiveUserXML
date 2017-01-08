@@ -1,0 +1,169 @@
+<map name="Senex CTW" version="1.0.0" description="A great CTW tournament map!">
+  <include src="defaults.xml"/>
+  <authors>
+    <author uuid="282f4bab54bb4e2a83459583c8d533ce" role="The Author of the map."/>
+    <!-- EDJM9 -->
+  </authors>
+  <teams>
+    <team id="red" color="red" min="2" max="25">{colors.red}</team>
+    <team id="blue" color="blue" min="2" max="25">{colors.blue}</team>
+  </teams>
+  <spawns>
+    <!-- Spectator Spawn -->
+    <spawn>
+      <regions>
+        <point yaw="90">-99, 63, -49</point>
+      </regions>
+    </spawn>
+    <!-- Team spawns -->
+    <spawn team="blue" loadout="default" yaw="-90">
+      <regions>
+        <point yaw="-90">-189, 9, -49</point>
+      </regions>
+    </spawn>
+    <spawn team="red" loadout="default" yaw="90">
+      <regions>
+        <point yaw="90">-9, 9, -49</point>
+      </regions>
+    </spawn>
+  </spawns>
+  <objectives>
+    <wools team="blue" pickup="true">
+      <wool color="red">
+        <source>
+          <cuboid min="33, 12, -5" max="33, 12, -4"/>
+        </source>
+        <destination>
+          <block>-186, 10, -43</block>
+        </destination>
+      </wool>
+    <wool color="yellow">
+      <source>
+        <cuboid min="33, 12, -94" max="33, 12, -93"/>
+       </source>
+     <destination>
+       <block>-186, 10, -55</block>
+     </destination>
+   </wool>
+  </wools>
+  <wools team="red" pickup="true">
+    <wool color="lime">
+      <source>
+        <cuboid min="-231, 12, -4" max="-231, 12, -5"/>
+      </source>
+      <destination>
+        <block>-12, 10, -55</block>
+      </destination>
+    </wool>
+    <wool color="purple">
+      <source>
+        <cuboid min="-231, 12, -93" max="-231, 12, -94"/>
+      </source>
+      <destination>
+        <block>-12, 10, -43</block>
+      </destination>
+     </wool>
+   </wools>
+ </objectives>
+ <zones>
+    <zone modify="never">
+        <region>
+            <cuboid min="-233, 35, -98" max="36, 256, 1"/>
+            <cuboid min="36, 1, -9" max="-6, 40, -88"/> <!-- Red Side -->
+            <cuboid min="-223, 1, -88" max="-191, 40, -9"/> <!-- Blue Side -->
+            <invert>
+              <cuboid min="-233, 1, -98" max="36, 40, 1"/>
+            </invert>
+        </region>
+    </zone>
+    <!--  blue woolrooms  -->
+    <zone modify="always">
+        <enter>
+            <team>red</team>
+        </enter>
+        <region>
+            <cuboid min="-224, 1, 1" max="-233, 40, -9"/> <!-- Lime -->
+            <cuboid min="-224, 1, -88" max="-233, 40, -98"/> <!-- Magenta -->
+        </region>
+    </zone>
+    <!--  red woolrooms  -->
+    <zone modify="always">
+        <enter>
+            <team>blue</team>
+        </enter>
+        <region>
+            <cuboid min="27, 1, 98" max="36, 40, -88"/> <!-- Yellow -->
+            <cuboid min="27, 1, -9" max="36, 40, 1"/> <!-- Red -->
+        </region>
+    </zone>
+    <!--  SPAWNS  -->
+    <zone modify="never">
+        <enter>
+            <team>blue</team>
+        </enter>
+        <region>
+            <cuboid min="-179, 1, -41" max="-192, 40, -56"/>
+        </region>
+    </zone>
+    <zone modify="never">
+        <enter>
+            <team>red</team>
+        </enter>
+        <region>
+            <cuboid min="-18, 1, -56" max="-5, 40, -41"/>
+        </region>
+    </zone>
+</zones>
+<loadouts>
+  <loadout id="default">
+    <effect duration="5s" amplifier="10">damage resistance</effect>
+    <helmet material="leather helmet" team-color="true"/>
+    <chestplate material="leather chestplate" team-color="true"/>
+    <leggins material="leather leggings" team-color="true"/>
+    <boots material="leather boots" team-color="true"/>
+    <item slot="0" material="iron sword"/>
+    <item slot="1" material="bow">
+      <enchantment level="1">arrow infinite</enchantment>
+    </item>
+    <item slot="2" material="shears">
+      <enchantment level="3">durability</enchantment>
+    </item>
+    <item slot="3" material="iron axe">
+      <enchantment level="1">dig speed</enchantment>
+    </item>
+    <item slot="4" material="cooked beef" amount="16"/>
+    <item slot="5" material="log" amount="32"/>
+    <item slot="6" material="black" amount="64"/>
+    <item slot="7" material="golden apple" amount="2"/>
+    <item slot="28" material="arrow" amount="1"/>
+    <item slot="29" material="shears">
+      <enchantment level="3">durability</enchantment>
+    </item>
+  </loadout>
+</loadouts>
+<items>
+   <remove-drops>
+     <any>
+       <material>leather helmet</material>
+       <material>leather chestplate</material>
+       <material>leather leggings</material>
+       <material>leather boots</material>
+       <material>arrow</material>
+       <material>log</material>
+       <material>wood</material>
+       <material>black</material>
+       <material>shears</material>
+       <material>iron sword</material>
+       <material>bow</material>
+     </any>
+   </remove-drops>
+   <repair-tools>
+     <any>
+       <material>iron sword</material>
+       <material>bow</material>
+       <material>iron pickaxe</material>
+       <material>iron axe</material>
+     </any>
+   </repair-tools>
+ </items>
+</map>

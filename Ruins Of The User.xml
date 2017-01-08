@@ -1,0 +1,146 @@
+<map name="Ruins Of The User" version="1.0.0">
+  <include src="defaults.xml"/>
+  <include src="Shared/reward-one-gap.xml"/>
+  <authors>
+    <author uuid="fbc05e3b2acf427eb59879a0742d1a72"/>
+    <!-- Jiloker -->
+    <author uuid="a201086047354de0b9f31130961ea955"/>
+    <!-- Flaan -->
+    <author uuid="0e56116560bf49e6aa383db002ad7d08"/>
+    <!-- AbusiveUser -->
+  </authors>
+  <teams>
+    <team id="green" color="green" min="2" max="15">{colors.green}</team>
+    <team id="orange" color="orange" min="2" max="15">{colors.orange}</team>
+  </teams>
+  <!-- No Score Limit -->
+  <objectives>
+    <scores kills="1">
+      <score team="orange"/>
+      <score team="green"/>
+    </scores>
+  </objectives>
+  <results>
+    <win scenario="objectives">
+      <check>
+        <time>12m</time>
+      </check>
+    </win>
+  </results>
+  <spawns>
+    <spawn>
+      <regions>
+        <point yaw="-0">310, 74, 271</point>
+      </regions>
+    </spawn>
+    <spawn team="orange" loadout="default">
+      <regions>
+        <point yaw="90">346, 57, 310</point>
+      </regions>
+    </spawn>
+    <spawn team="green" loadout="default">
+      <regions>
+        <point yaw="-90">276, 57, 310</point>
+      </regions>
+    </spawn>
+  </spawns>
+  <regions>
+    <join id="orange-base">
+      <cuboid min="279, 65, 316" max="272, 55, 303"/>
+    </join>
+    <join id="green-base">
+      <cuboid min="350, 55, 317" max="343, 65, 304"/>
+    </join>
+  </regions>
+  <loadouts>
+    <loadout id="default">
+      <effect duration="3s">damage resistance</effect>
+      <helmet material="leather helmet" team-color="true"/>
+      <chestplate material="leather chestplate" team-color="true"/>
+      <leggings material="leather leggings" team-color="true"/>
+      <boots material="leather boots" team-color="true"/>
+      <item slot="0" material="stone sword"/>
+      <item slot="1" material="bow"/>
+      <item slot="2" material="arrow" amount="32"/>
+      <item slot="7" material="golden apple"/>
+      <item slot="8" material="cooked beef" amount="32"/>
+    </loadout>
+  </loadouts>
+  <items>
+    <remove-drops>
+      <any>
+        <material>leather helmet</material>
+        <material>leather chestplate</material>
+        <material>leather leggings</material>
+        <material>leather boots</material>
+        <material>cooked beef</material>
+        <material>arrow</material>
+      </any>
+    </remove-drops>
+    <repair-tools>
+      <any>
+        <material>stone sword</material>
+        <material>bow</material>
+      </any>
+    </repair-tools>
+  </items>
+  <zones>
+    <!-- Disable Build -->
+    <zone modify="never" region="everywhere">
+      <message>{errors.cannot-build-map}</message>
+    </zone>
+    <!-- Green Scorebox -->
+    <zone>
+      <region>
+        <cuboid min="338, 58, 287" max="334, 63, 291"/>
+        <cuboid min="338, 58, 333" max="334, 63, 329"/>
+      </region>
+      <enter>
+        <team>green</team>
+      </enter>
+      <scorebox points="1"/>
+      <portal yaw="90">
+        <destination>
+          <point>276, 57, 310</point>
+        </destination>
+      </portal>
+      <message>{errors.wrong-scorebox}</message>
+    </zone>
+    <!-- Orange Scorebox -->
+    <zone>
+      <region>
+        <cuboid min="284, 58, 287" max="288, 63, 291"/>
+        <cuboid min="284, 58, 333" max="288, 63, 329"/>
+      </region>
+      <enter>
+        <team>orange</team>
+      </enter>
+      <scorebox points="1"/>
+      <portal yaw="-90">
+        <destination>
+          <point>346, 56, 310</point>
+        </destination>
+      </portal>
+      <message>{errors.wrong-scorebox}</message>
+    </zone>
+    <!-- Orange Base -->
+    <zone region="orange-base" modify="never">
+      <enter>
+        <team>orange</team>
+      </enter>
+      <message>{errors.spawn-restricted}</message>
+    </zone>
+    <!-- Green Base -->
+    <zone region="green-base" modify="never">
+      <enter>
+        <team>green</team>
+      </enter>
+      <message>{errors.spawn-restricted}</message>
+    </zone>
+  </zones>
+  <world>
+    <gamerules>
+      <doDaylightCycle>false</doDaylightCycle>
+    </gamerules>
+  </world>
+</map>

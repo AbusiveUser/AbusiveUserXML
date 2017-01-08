@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<map name="System Divide" version="1.0.0">
+<include src="defaults.xml"/>
+<authors>
+  <author uuid="0e56116560bf49e6aa383db002ad7d08"/> <!-- AbusiveUser -->
+</authors>
+<teams>
+  <team id="blue" color="blue" min="1" max="15" max-overfill="20">{color.blue}</team>
+  <team id="red" color="red" min="1" max="15" max-overfill="20">{color.red}</team>
+</teams>
+<spawns>
+<!--  Spectator spawn  -->
+<spawn>
+ <regions>
+  <point yaw="90">62, 52, 0.5</point>
+ </regions>
+</spawn>
+<!--  Team spawns  -->
+<spawn team="red" yaw="0" loadout="default">
+ <regions>
+  <point yaw="0">123, 7, 0.5</point>
+ </regions>
+</spawn>
+<spawn team="blue" yaw="180" loadout="default">
+ <regions>
+   <point yaw="180">0.5, 12, 91.5</point>
+  </regions>
+ </spawn>
+</spawns>
+<world>
+  <gamerules>
+    <doDaylightCycle>true</doDaylightCycle>
+  </gamerules>
+</world>
+<loadouts>
+  <loadout id="default">
+    <effect duration="5s">damage resistance</effect>
+    <helmet material="iron helmet"/>
+    <chestplate material="leather chestplate" team-color="true"/>
+    <leggings material="iron leggings" team-color="true"/>
+    <boots material="leather boots" team-color="true"/>
+    <item slot="0" material="stone sword"/>
+    <item slot="1" material="bow"/>
+      <enchantment level="1">durability</enchantment
+      <enchantment level="1">arrow infinite</enchantment
+    </item>
+    <item slot="2" material="iron pickaxe">
+      <enchantment level="2">durability</enchantment>
+      <enchantment level="1">dig speed</enchantment>
+    </item>
+    <item slot="3" material="iron axe"/>
+    <item slot="4" material="wood" amount="32"/>
+    <item slot="5" material="glass" amount="64"/>
+    <item slot="7" material="golden apple" amount="1"/>
+    <item slot="8" material="golden carrot" amount="32"/>
+    <item slot="28" material="arrow" amount="1"/>
+  </loadout>
+<loadout id="kill-reward">
+  <item material="golden apple"
+  </loadout>
+</loadouts>
+<kills>
+  <rewards>
+    <rewards loadout="kill-reward"
+  </rewards>
+</kills>
+<items>
+ <remove-drops>
+  <any>
+    <material>leather chestplate</material>
+    <material>iron pickaxe</material>
+    <material>stone sword</material>
+    <material>bow</material>
+    <material>iron axe</material>
+    <material>arrow</material>
+   </any>
+ </remove-drops>
+</items>
+<zones>
+  <zone modify="never">
+    <region>
+      <subtract id="monument-enter">
