@@ -1,0 +1,151 @@
+<map name="Nevran" version="1.0.1">
+  <include src="defaults.xml"/>
+  <authors>
+   <author uuid="62d9830a0b774e219d4fde4b60c68fb5" role="Author of the map"/>
+   <!-- shaarpie -->
+   <author uuid="755acf7dc9b44f1db7acdb4dfdfa2b26" role="Original XML"/>
+   <!-- Strmr -->
+   <author uuid="0e56116560bf49e6aa383db002ad7d08" role="Contributor"/>
+   <!-- AbusiveUser -->
+  </authors>
+  <teams>
+    <team id="red" color="red" min="2" max="15">{colors.red}</team>
+    <team id="blue" color="blue" min="2" max="15">{colors.blue}</team>
+  </teams>
+  <spawns>
+   <!-- Spectator Spawn -->
+   <spawn>
+     <regions>
+       <point yaw="90">6, 72, 27</point>
+     </regions>
+   </spawn>
+   <!-- Team Spawns -->
+   <spawn team="red" loadout="default" yaw="90">
+     <regions>
+       <point yaw="90">112, 13, 27</point>
+     </regions>
+   </spawn>
+   <spawn team="blue" loadout="default" yaw="-90">
+     <regions>
+       <point yaw="-90">-100, 13, 27</point>
+     </regions>
+   </spawn>
+ </spawns>
+ <objectives>
+   <wools team="blue">
+     <wool color="red">
+       <source>
+         <cuboid min="78, 8, 27" max="78, 8, 27"/>
+       </source>
+       <destination>
+         <block>-102, 14, 27</block>
+       </destination>
+     </wool>
+   </wools>
+   <wool team="red">
+     <wool color="blue">
+       <source>
+         <cuboid min="78, 8, 27" max="78, 8, 27"/>
+       </source>
+       <destination>
+         <block>114, 14, 27</block>
+       </destination>
+     </wool>
+    </wools>
+   <monuments destroyable="true" owner="red" materials="emerald block" fireworks="true">
+      <monument name="{directions.left}">
+        <region>
+          <cuboid min="34, 6, 51" max="30, 8, 55"/>
+        </region>
+      </monument>
+      <monument name="{directions.right}">
+        <region>
+          <cuboid min="32, 6, 1" max="30, 8, -1"/>
+        </region>
+     </monument>
+   </monuments>
+    <monuments destroyable="true" owner="blue" materials="emerald block" fireworks="true">
+      <monument name="{directions.left}">
+        <region>
+          <cuboid min="-20, 6, 1" max="-18, 8, -1"/>
+        </region>
+      </monument>
+    <monument name="{directions.right}">
+      <region>
+        <cuboid min="-20, 6, 53" max="-18, 8, 55"/>
+       </region>
+     </monument>
+   </monuments>
+ </objectives>
+ <results>
+   <win scenario="objectives">
+     <check>
+       <time>45</time>
+     </check>
+   </win>
+ </results>
+ <loadouts>
+   <loadout id="default">
+     <item slot="0" material="iron sword"/>
+     <item slot="1" material="bow">
+       <enchantment>arrow infinite</enchantment>
+     <item slot="2" material="diamond pickaxe"/>
+       <enchantment level="3">durability</enchantment>
+     <item slot="3" material="iron axe"/>
+     <item slot="4" material="log 2" amount="64"/>
+     <item slot="5" material="golden carrot" amount="64"/>
+     <item slot="6" material="smooth brick" amount="64"/>
+     <item slot="7" material="smooth brick" amount="64"/>
+     <item slot="17" material="arrow"/>
+   </loadout>
+   <loadout id="kill-reward">
+     <item material="golden apple"/>
+   </loadout>
+ </loadouts>
+ <items>
+   <remove-drops>
+     <any>
+       <material>arrow</material>
+       <material>golden apple</material>
+       <material>iron axe</material>
+       <material>diamond pickaxe</material>
+     </any>
+   </remove-drops>
+   <repair-tools>
+     <any>
+       <material>iron sword</material>
+       <material>bow</material>
+       <material>diamond pickaxe</material>
+     </any>
+   </repair-tools>
+ </items>
+ <regions>
+   <subtract id="void-outer">
+     <void/>
+     <cuboid min="22, -0, -20" max="-10, 40, 74"/>
+   </substract>
+   <above id="height-limit" y="40"/>
+ </regions>
+ <zones>
+   <zone modify="never">
+     <region>
+       <cuboid min="-90, 16, 25" max="-102, 12, 29"/>
+       <!-- Blue Base -->
+     </region>
+     <message>{errors.spawn-restricted}</message>
+   </zone>
+   <zone modify="never">
+     <region>
+       <cuboid min="102, 16, 29" max="114, 12, 25"/>
+       <!-- Red Base -->
+     </region>
+     <message>{errors.spawn-restricted}</message>
+   </zone>
+   <zone modify="never" region="void-outer">
+     <message>{errors.outside-map}</message>
+   </zone>
+   <zone modify="never" region="height-limit">
+     <message>{errors.height-limits}</message>
+   </zone>
+  </zones>
+ </map>
