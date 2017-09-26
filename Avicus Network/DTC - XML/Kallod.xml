@@ -1,10 +1,10 @@
-<map name="Kallod" version="1.0.0">
+<map name="Kallod" version="1.0.5">
   <include src="default.xml"/>
   <include src="Shared/reward-one-gap.xml"/>
   <include src="Shared/phases-dtc.xml"/>
   <authors>
     <author uuid="0e56116560bf49e6aa383db002ad7d08"/>
-    <!-- AbusiveUser -->
+    <!-- Passively -->
   </authors>
   <teams>
     <team id="red" color="red" min="2" max="25">{colors.red}</team>
